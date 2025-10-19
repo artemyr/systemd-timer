@@ -3,4 +3,4 @@ Description=Hello Timer Service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/bash -c 'echo "Hello from timer at $(date)" >> /var/log/hello.log'
+ExecStart=/usr/bin/bash -c '/app/hello > /var/log/hello.log'

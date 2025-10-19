@@ -1,4 +1,13 @@
+FROM golang as builder
+
+WORKDIR /app
+COPY /app .
+RUN go build -o hello hello.go
+
 FROM jrei/systemd-ubuntu:22.04
+
+WORKDIR /app
+COPY --from=builder /app/hello .
 
 # Устанавливаем необходимые пакеты
 RUN apt update && apt install -y vim bash sudo
